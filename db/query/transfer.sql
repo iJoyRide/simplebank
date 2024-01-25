@@ -5,13 +5,15 @@ INSERT INTO transfers (
   amount
 ) VALUES (
   $1, $2, $3
-) RETURNING *;
+)
+RETURNING *;
 
 -- name: GetTransfer :one
 SELECT * FROM transfers
-WHERE id = $1 LIMIT 1;
+WHERE id = $1 
+LIMIT 1;
 
--- name: ListTransfers :many
+-- name: ListTransfer :many
 SELECT * FROM transfers
 WHERE 
     from_account_id = $1 OR
